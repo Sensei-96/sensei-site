@@ -45,7 +45,18 @@ nav .links a:hover{color:var(--text)}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
 .kill{margin-top:34px;display:inline-flex;align-items:center;gap:10px;font:400 12.5px var(--mono);color:var(--dim);border:1px dashed var(--line);border-radius:999px;padding:8px 16px}
 .kill b{color:var(--red);font-weight:500}
+.orb{position:relative;display:flex;align-items:center;justify-content:center;min-height:380px}
+.orb::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(212,162,79,.22),rgba(212,162,79,.06) 55%,transparent 72%);filter:blur(8px);animation:pulse 6s ease-in-out infinite}
+.orb img{position:relative;width:300px;height:300px;border-radius:50%;animation:spin 48s linear infinite;filter:drop-shadow(0 0 32px rgba(212,162,79,.28))}
+.orb .ring{position:absolute;border:1px solid var(--gold-dim);border-radius:50%;opacity:.35}
+.orb .ring.r1{width:330px;height:330px;animation:spin 60s linear infinite}
+.orb .ring.r2{width:380px;height:380px;border-style:dashed;opacity:.2;animation:spin 90s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+@media(prefers-reduced-motion:reduce){.orb img,.orb .ring,.orb::before{animation:none}}
 .stack{display:flex;flex-direction:column;gap:8px}
+.arch{border-bottom:1px solid var(--line);padding:64px 0;background:var(--bg)}
+.arch .sechead{margin-bottom:28px}
 .layer{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 16px;display:flex;align-items:baseline;gap:14px;transition:.15s}
 .layer:hover{border-color:var(--gold-dim);transform:translateX(4px)}
 .layer .lv{font:500 11.5px var(--mono);color:var(--gold);min-width:36px}
@@ -111,14 +122,9 @@ footer .right{margin-left:auto}
 </div>
 <div class="kill"><b>●</b> kill switch: file&nbsp;· redis&nbsp;· telegram — any one halts the system</div>
 </div>
-<div class="stack">
-<div class="layer"><span class="lv">L0</span><span class="nm">SENSEI Core</span><span class="ds">constitutional reasoning</span></div>
-<div class="layer"><span class="lv">L0.5</span><span class="nm">Goal Engine</span><span class="ds">signals → risk-gated goals</span></div>
-<div class="layer"><span class="lv">L1</span><span class="nm">Gateway</span><span class="ds">routing · policy · channels</span></div>
-<div class="layer"><span class="lv">L1.5</span><span class="nm">Sandbox</span><span class="ds">isolated execution</span></div>
-<div class="layer"><span class="lv">L2</span><span class="nm">Verifier Swarm</span><span class="ds">safety gate on every output</span></div>
-<div class="layer"><span class="lv">L3</span><span class="nm">Domain Agents</span><span class="ds">legal · research · execution</span></div>
-<div class="layer"><span class="lv">L4</span><span class="nm">Skills</span><span class="ds">sources · tools · integrations</span></div>
+<div class="orb">
+<span class="ring r1"></span><span class="ring r2"></span>
+<img src="/logo.png" alt="SENSEI agentic core — gold particle sphere">
 </div>
 </div></div>
 
@@ -129,6 +135,21 @@ footer .right{margin-left:auto}
 <div class="stat"><b>27</b><span>production agents</span></div>
 <div class="stat"><b>SHA-256</b><span>hash-chained audit</span></div>
 </div></div></div>
+
+<div class="arch"><div class="wrap">
+<div class="sechead"><span class="eyebrow">Architecture</span>
+<h2>Six layers, one risk spine</h2>
+<p>From constitutional reasoning down to skills — every layer reports to the same kill switch.</p></div>
+<div class="stack">
+<div class="layer"><span class="lv">L0</span><span class="nm">SENSEI Core</span><span class="ds">constitutional reasoning</span></div>
+<div class="layer"><span class="lv">L0.5</span><span class="nm">Goal Engine</span><span class="ds">signals → risk-gated goals</span></div>
+<div class="layer"><span class="lv">L1</span><span class="nm">Gateway</span><span class="ds">routing · policy · channels</span></div>
+<div class="layer"><span class="lv">L1.5</span><span class="nm">Sandbox</span><span class="ds">isolated execution</span></div>
+<div class="layer"><span class="lv">L2</span><span class="nm">Verifier Swarm</span><span class="ds">safety gate on every output</span></div>
+<div class="layer"><span class="lv">L3</span><span class="nm">Domain Agents</span><span class="ds">legal · research · execution</span></div>
+<div class="layer"><span class="lv">L4</span><span class="nm">Skills</span><span class="ds">sources · tools · integrations</span></div>
+</div>
+</div></div>
 
 <section id="capabilities"><div class="wrap">
 <div class="sechead"><span class="eyebrow">Capabilities</span>
