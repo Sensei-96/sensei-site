@@ -23,6 +23,8 @@
   --border: oklch(0.18 0.008 260);
   --input: oklch(0.14 0.008 260);
   --ring: oklch(0.94 0.005 90);
+  --gold: oklch(0.78 0.12 70);
+  --gold-soft: oklch(0.84 0.10 75);
   --chart-1: oklch(0.94 0.005 90);
   --chart-2: oklch(0.72 0.01 90);
   --chart-3: oklch(0.52 0.015 90);
@@ -62,6 +64,8 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -185,11 +189,11 @@
   .word-gradient {
     background: linear-gradient(
       45deg,
-      #eca8d6 0%,
-      #a78bfa 25%,
-      #67e8f9 50%,
-      #fbbf24 75%,
-      #eca8d6 100%
+      #b9831f 0%,
+      #e0a458 25%,
+      #f3c878 50%,
+      #e0a458 75%,
+      #b9831f 100%
     );
     background-size: 300% 300%;
     background-clip: text;

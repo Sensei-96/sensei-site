@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { name: "Capabilities",  href: "#features"      },
   { name: "Process",       href: "#how-it-works"  },
-  { name: "Infra",         href: "#infra"          },
+  { name: "Infrastructure", href: "#infra"        },
   { name: "Integrations",  href: "#integrations"  },
   { name: "Security",      href: "#security"      },
 ];
@@ -46,8 +46,9 @@ export function Navigation() {
         >
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
-            <span className={`font-display tracking-tight transition-all duration-500 ${isScrolled ? "text-xl text-foreground" : "text-2xl text-white"}`}>COMPUTE</span>
-            <span className={`font-mono transition-all duration-500 ${isScrolled ? "text-[10px] mt-0.5 text-muted-foreground" : "text-xs mt-1 text-white/60"}`}>TM</span>
+            <span className="w-2 h-2 rounded-full bg-gold shrink-0" />
+            <span className={`font-mono font-medium tracking-[0.2em] transition-all duration-500 ${isScrolled ? "text-sm text-foreground" : "text-base text-white"}`}>SENSEI</span>
+            <span className={`font-mono transition-all duration-500 ${isScrolled ? "text-[10px] mt-0.5 text-muted-foreground" : "text-xs mt-0.5 text-white/50"}`}>/ POINTS96</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -66,14 +67,14 @@ export function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="#" className={`transition-all duration-500 ${isScrolled ? "text-xs text-foreground/70 hover:text-foreground" : "text-sm text-white/70 hover:text-white"}`}>
-              Sign in
+            <a href="#how-it-works" className={`transition-all duration-500 ${isScrolled ? "text-xs text-foreground/70 hover:text-foreground" : "text-sm text-white/70 hover:text-white"}`}>
+              See how it decides
             </a>
             <Button
               size="sm"
-              className={`rounded-full transition-all duration-500 ${isScrolled ? "bg-foreground hover:bg-foreground/90 text-background px-4 h-8 text-xs" : "bg-white hover:bg-white/90 text-black px-6"}`}
+              className={`rounded-full transition-all duration-500 bg-gold hover:bg-gold-soft text-background ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
             >
-              Deploy agent
+              Request access
             </Button>
           </div>
 
@@ -135,13 +136,13 @@ export function Navigation() {
               className="flex-1 rounded-full h-14 text-base"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Sign in
+              See how it decides
             </Button>
             <Button 
-              className="flex-1 bg-foreground text-background rounded-full h-14 text-base"
+              className="flex-1 bg-gold hover:bg-gold-soft text-background rounded-full h-14 text-base"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Deploy agent
+              Request access
             </Button>
           </div>
         </div>

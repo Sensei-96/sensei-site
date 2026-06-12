@@ -21,9 +21,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'COMPUTE - AI Agents for Distributed Computing',
-  description: 'Deploy autonomous AI agents on distributed infrastructure. Offload complex tasks to intelligent workers that run 24/7.',
+  title: 'SENSEI — The agentic brain of POINTS96',
+  description: 'SENSEI is a constitutionally-constrained multi-agent system that runs legal-tech and trading under one risk layer. It invents its own goals, verifies its own outputs — and a human can halt all of it with one command.',
   generator: 'v0.app',
+}
+
+export const viewport = {
+  themeColor: '#0a0a0a',
 }
 
 export default function RootLayout({

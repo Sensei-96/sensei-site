@@ -5,39 +5,39 @@ import { useEffect, useRef, useState } from "react";
 const steps = [
   {
     number: "01",
-    title: "Define",
-    subtitle: "your agent",
-    description: "Describe what your agent should do. Set its capabilities, constraints, and goals in natural language or code.",
-    code: `const researcher = new Agent({
-  role: 'Research Analyst',
-  capabilities: ['web', 'docs', 'api'],
-  memory: true,
-  autonomy: 'full'
+    title: "Signal",
+    subtitle: "& goal",
+    description: "External signals — legal-source changes, market moves, anomalies — are turned into goals. Each goal is risk-classified before anything runs.",
+    code: `const goal = goalEngine.create({
+  signal: 'ARLIS amendment',
+  risk: classify(signal), // LOW | MED | HIGH
+  agent: 'legal_armenia',
+  policy: 'deny-by-default'
 })`,
   },
   {
     number: "02",
-    title: "Assign",
-    subtitle: "the task",
-    description: "Give your agent a mission. It breaks down complex tasks into steps and executes them autonomously.",
-    code: `await researcher.execute({
-  task: 'Analyze competitor pricing',
-  sources: ['public-data', 'news'],
-  output: 'structured-report',
-  deadline: '2h'
-})`,
+    title: "Human",
+    subtitle: "gate",
+    description: "LOW and MEDIUM goals run automatically and are logged. HIGH-risk goals wait for explicit human approval in Telegram before execution.",
+    code: `if (goal.risk === 'HIGH') {
+  await telegram.requestApproval(goal)
+  // ⏸ waiting human approval…
+} else {
+  await sandbox.run(goal)
+}`,
   },
   {
     number: "03",
-    title: "Monitor",
-    subtitle: "& scale",
-    description: "Track progress in real-time. Spin up more agents as needed. Pay only for compute used.",
-    code: `optimus.dashboard({
-  agents: [researcher],
-  metrics: ['tasks', 'latency', 'cost'],
-  alerts: true
-})
-// 847 tasks completed today`,
+    title: "Verify",
+    subtitle: "& audit",
+    description: "A verifier swarm checks every output in parallel. Anything that fails never leaves the system, and every decision lands in a hash-chained audit log.",
+    code: `await verifierSwarm.check(result)
+// ✓ verified by swarm 3/3
+audit.append({
+  goal, result,
+  hash: sha256(prev + result)
+}) // tamper-evident chain`,
   },
 ];
 
@@ -88,9 +88,9 @@ export function HowItWorksSection() {
             <h2 className={`text-6xl md:text-7xl lg:text-[128px] font-display tracking-tight leading-[0.85] transition-all duration-1000 delay-100 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
             }`}>
-              <span className="block">Define.</span>
-              <span className="block text-white/30">Deploy.</span>
-              <span className="block text-white/10">Scale.</span>
+              <span className="block">Signal.</span>
+              <span className="block text-white/30">Gate.</span>
+              <span className="block text-white/10">Verify.</span>
             </h2>
           </div>
 
@@ -125,13 +125,13 @@ export function HowItWorksSection() {
               {/* Step number with animated line */}
               <div className="flex items-center gap-4 mb-8">
                 <span className={`text-4xl font-display transition-colors duration-300 ${
-                  activeStep === index ? "text-[#eca8d6]" : "text-white/20"
+                  activeStep === index ? "text-gold" : "text-white/20"
                 }`}>
                   {step.number}
                 </span>
                 <div className="flex-1 h-px bg-white/10 overflow-hidden">
                   {activeStep === index && (
-                    <div className="h-full bg-[#eca8d6]/50 animate-progress" />
+                    <div className="h-full bg-gold/50 animate-progress" />
                   )}
                 </div>
               </div>
@@ -152,7 +152,7 @@ export function HowItWorksSection() {
               </p>
 
               {/* Active indicator */}
-              <div className={`absolute bottom-0 left-0 right-0 h-1 bg-[#eca8d6] transition-transform duration-500 origin-left ${
+              <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gold transition-transform duration-500 origin-left ${
                 activeStep === index ? "scale-x-100" : "scale-x-0"
               }`} />
             </button>
