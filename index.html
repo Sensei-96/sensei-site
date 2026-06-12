@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SENSEI — the agentic brain of POINTS96</title>
+<meta name="description" content="SENSEI is a constitutionally-constrained multi-agent system running legal-tech and trading under one risk layer — autonomy a human can always halt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0C;--panel:#131316;--panel2:#17171B;--line:#232328;--text:#ECECEA;--mut:#9C9C97;--dim:#6B6B66;--gold:#D4A24F;--gold-dim:#8A6A33;--green:#5DCAA5;--red:#E24B4A;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 16px/1.65 'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+h1{font-size:clamp(36px,5.4vw,62px);font-weight:600;line-height:1.06;letter-spacing:-.02em}
+h2{font-size:clamp(26px,3.4vw,38px);font-weight:600;letter-spacing:-.01em;line-height:1.15}
+h3{font-size:17px;font-weight:600}
+.mut{color:var(--mut)}
+.mono{font-family:var(--mono)}
+header{position:sticky;top:0;z-index:50;background:rgba(11,11,12,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;gap:28px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:500 15px var(--mono);letter-spacing:.06em}
+.logo .dot{width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#F2CE8A,var(--gold) 55%,#7A5B27)}
+.logo small{color:var(--dim);font-size:11px}
+nav .links{display:flex;gap:22px;margin-left:auto;font-size:13.5px;color:var(--mut)}
+nav .links a:hover{color:var(--text)}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:500;border:1px solid var(--line);transition:.15s}
+.btn:hover{border-color:var(--gold-dim)}
+.btn.gold{background:var(--gold);color:#1A1407;border-color:var(--gold)}
+.btn.gold:hover{background:#E3B563}
+.hero{padding:96px 0 72px;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero p.lead{margin:22px 0 30px;font-size:18px;color:var(--mut);max-width:54ch}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.kill{margin-top:34px;display:inline-flex;align-items:center;gap:10px;font:400 12.5px var(--mono);color:var(--dim);border:1px dashed var(--line);border-radius:999px;padding:8px 16px}
+.kill b{color:var(--red);font-weight:500}
+.stack{display:flex;flex-direction:column;gap:8px}
+.layer{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 16px;display:flex;align-items:baseline;gap:14px;transition:.15s}
+.layer:hover{border-color:var(--gold-dim);transform:translateX(4px)}
+.layer .lv{font:500 11.5px var(--mono);color:var(--gold);min-width:36px}
+.layer .nm{font-size:14.5px;font-weight:500}
+.layer .ds{font-size:12.5px;color:var(--dim);margin-left:auto;text-align:right}
+.statband{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px}
+.stat{padding:26px 18px;text-align:center;background:var(--bg)}
+.stat b{display:block;font:500 26px/1.2 var(--mono);color:var(--text)}
+.stat span{font-size:12.5px;color:var(--dim)}
+section{padding:88px 0}
+.sechead{max-width:62ch;margin-bottom:44px}
+.sechead p{margin-top:14px;color:var(--mut)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px}
+.card h3{margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.card h3 i{width:8px;height:8px;border-radius:2px;background:var(--gold);display:inline-block}
+.card p{font-size:14.5px;color:var(--mut)}
+.card .tag{display:inline-block;margin-top:14px;font:400 11.5px var(--mono);color:var(--gold);border:1px solid var(--gold-dim);border-radius:999px;padding:4px 11px}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;counter-reset:step}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 14px;position:relative}
+.step::before{counter-increment:step;content:"0" counter(step);font:500 11px var(--mono);color:var(--gold);display:block;margin-bottom:10px}
+.step b{font-size:13.5px;font-weight:500;display:block;line-height:1.35}
+.step span{font-size:12px;color:var(--dim);display:block;margin-top:6px;line-height:1.45}
+.step.hot{border-color:var(--gold-dim);background:linear-gradient(180deg,rgba(212,162,79,.07),transparent)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px}
+.list h3{margin-bottom:16px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font:400 12.5px var(--mono);border:1px solid var(--line);border-radius:999px;padding:6px 13px;color:var(--mut)}
+.pill.live{color:var(--green);border-color:rgba(93,202,165,.35)}
+.sec-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.audit{margin-top:56px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font:400 12.5px/2 var(--mono);color:var(--dim);overflow:hidden}
+.audit .ok{color:var(--green)}
+.audit .gold{color:var(--gold)}
+.cta-final{text-align:center;padding:110px 0}
+.cta-final h2{max-width:24ch;margin:0 auto 18px}
+.cta-final p{color:var(--mut);margin-bottom:32px}
+footer{border-top:1px solid var(--line);padding:36px 0;font-size:13px;color:var(--dim)}
+footer .wrap{display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+footer .right{margin-left:auto}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:64px}.stats{grid-template-columns:repeat(2,1fr)}.grid2,.cols,.sec-row{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}nav .links{display:none}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap"><nav>
+<a class="logo" href="#"><span class="dot"></span>SENSEI <small>/ POINTS96</small></a>
+<div class="links">
+<a href="#capabilities">Capabilities</a><a href="#process">Process</a><a href="#infra">Infrastructure</a><a href="#security">Security</a>
+</div>
+<a class="btn gold" href="mailto:harutyunyan@points96.com?subject=SENSEI%20access%20request">Request access</a>
+</nav></div></header>
+
+<div class="wrap"><div class="hero">
+<div>
+<span class="eyebrow">POINTS96 · Agentic systems · Yerevan</span>
+<h1>The agentic brain with a kill&nbsp;switch</h1>
+<p class="lead">SENSEI is a constitutionally-constrained multi-agent system that runs legal-tech and trading under one risk layer. It invents its own goals, verifies its own outputs — and a human can halt all of it with one command.</p>
+<div class="cta">
+<a class="btn gold" href="mailto:harutyunyan@points96.com?subject=SENSEI%20access%20request">Request access</a>
+<a class="btn" href="#process">See how it decides</a>
+</div>
+<div class="kill"><b>●</b> kill switch: file&nbsp;· redis&nbsp;· telegram — any one halts the system</div>
+</div>
+<div class="stack">
+<div class="layer"><span class="lv">L0</span><span class="nm">SENSEI Core</span><span class="ds">constitutional reasoning</span></div>
+<div class="layer"><span class="lv">L0.5</span><span class="nm">Goal Engine</span><span class="ds">signals → risk-gated goals</span></div>
+<div class="layer"><span class="lv">L1</span><span class="nm">Gateway</span><span class="ds">routing · policy · channels</span></div>
+<div class="layer"><span class="lv">L1.5</span><span class="nm">Sandbox</span><span class="ds">isolated execution</span></div>
+<div class="layer"><span class="lv">L2</span><span class="nm">Verifier Swarm</span><span class="ds">safety gate on every output</span></div>
+<div class="layer"><span class="lv">L3</span><span class="nm">Domain Agents</span><span class="ds">legal · research · execution</span></div>
+<div class="layer"><span class="lv">L4</span><span class="nm">Skills</span><span class="ds">sources · tools · integrations</span></div>
+</div>
+</div></div>
+
+<div class="statband"><div class="wrap"><div class="stats">
+<div class="stat"><b>110/110</b><span>tests green</span></div>
+<div class="stat"><b>6</b><span>architectural layers</span></div>
+<div class="stat"><b>3-way</b><span>kill switch</span></div>
+<div class="stat"><b>27</b><span>production agents</span></div>
+<div class="stat"><b>SHA-256</b><span>hash-chained audit</span></div>
+</div></div></div>
+
+<section id="capabilities"><div class="wrap">
+<div class="sechead"><span class="eyebrow">Capabilities</span>
+<h2>Autonomy, supervised</h2>
+<p>Every capability ships with its own restraint. Agents act — verifiers check, policies deny by default, humans hold the final gate.</p></div>
+<div class="grid2">
+<div class="card"><h3><i></i>Goal Engine</h3><p>Watches signals — legal-source changes, market events, system anomalies — and turns them into goals. Each goal is risk-classified: LOW and MEDIUM run automatically and are logged; HIGH waits for explicit human approval in Telegram.</p><span class="tag">signal → goal → risk → execute</span></div>
+<div class="card"><h3><i></i>Verifier Swarm</h3><p>Constitutional, anti-corruption and regulatory verifiers run on every output in parallel. An answer that fails verification never leaves the system — it is repaired or escalated.</p><span class="tag">safety gate · L2</span></div>
+<div class="card"><h3><i></i>Self-improvement, human-gated</h3><p>Workflows evolve by genetic programming, prompts improve through A/B tests, new skills are proposed from execution traces. No self-modification is ever applied without a human approval step.</p><span class="tag">propose, never apply</span></div>
+<div class="card"><h3><i></i>Legal &amp; market skills</h3><p>Production clients for Armenian legal sources — ARLIS, DataLex, Parliament, eGov — plus vector retrieval, document processing, and execution adapters for trading venues.</p><span class="tag">27 agents in production</span></div>
+</div>
+</div></section>
+
+<section id="process" style="padding-top:0"><div class="wrap">
+<div class="sechead"><span class="eyebrow">Process</span>
+<h2>How a decision travels</h2>
+<p>Six stations between an external signal and an executed action. The dangerous one — number four — belongs to a human.</p></div>
+<div class="flow">
+<div class="step"><b>Signal</b><span>legal change, market move, anomaly</span></div>
+<div class="step"><b>Goal</b><span>generated &amp; deduplicated</span></div>
+<div class="step"><b>Risk class</b><span>LOW / MEDIUM / HIGH</span></div>
+<div class="step hot"><b>Human gate</b><span>HIGH risk → Telegram approve</span></div>
+<div class="step"><b>Sandboxed run</b><span>deny-by-default policy</span></div>
+<div class="step"><b>Audited result</b><span>tamper-evident hash chain</span></div>
+</div>
+<div class="audit">
+<div><span class="gold">audit</span> 14:25:09 goal_created &nbsp;risk=LOW &nbsp;"monitor ARLIS amendments" <span class="ok">✓ chain verified</span></div>
+<div><span class="gold">audit</span> 14:25:11 goal_running &nbsp;agent=legal_armenia &nbsp;policy=deny-by-default</div>
+<div><span class="gold">audit</span> 14:26:02 goal_done &nbsp;tokens=3,412 &nbsp;cost=$0.04 <span class="ok">✓ verified by swarm 3/3</span></div>
+<div><span class="gold">audit</span> 14:31:40 goal_created &nbsp;risk=HIGH &nbsp;"draft regulatory filing" → waiting human approval…</div>
+</div>
+</div></section>
+
+<section id="infra" style="padding-top:0"><div class="wrap">
+<div class="sechead"><span class="eyebrow">Infrastructure &amp; integrations</span>
+<h2>Boring where it should be</h2>
+<p>Standard, auditable infrastructure — the exotic part is the brain, not the plumbing.</p></div>
+<div class="cols">
+<div class="list"><h3>Runs on</h3><div class="pills">
+<span class="pill live">Azure</span><span class="pill">PostgreSQL + pgvector</span><span class="pill">Redis</span><span class="pill">Kubernetes</span><span class="pill">FastAPI gateway</span><span class="pill">Alembic migrations</span><span class="pill">Neo4j knowledge graph</span>
+</div></div>
+<div class="list"><h3>Connects to</h3><div class="pills">
+<span class="pill">ARLIS</span><span class="pill">DataLex</span><span class="pill">Parliament RA</span><span class="pill">eGov.am</span><span class="pill">Bybit</span><span class="pill">Tradovate</span><span class="pill live">Telegram — human override</span>
+</div></div>
+</div>
+</div></section>
+
+<section id="security" style="padding-top:0"><div class="wrap">
+<div class="sechead"><span class="eyebrow">Security &amp; compliance</span>
+<h2>Rules that outrank the model</h2>
+<p>The constitution is code-adjacent and inviolable: the system may propose changes to its own rules, but only a human can activate them.</p></div>
+<div class="sec-row">
+<div class="card"><h3><i></i>Constitutional core</h3><p>Hard constraints with top-down precedence: human override wins, HIGH risk needs approval, no self-modification of L0 prompts, accuracy over bravado.</p></div>
+<div class="card"><h3><i></i>Deny by default</h3><p>Tool allowlists, egress allowlists, token and cost caps, wall-time limits, PII redaction — enforced by the policy engine before any task reaches a sandbox.</p></div>
+<div class="card"><h3><i></i>Sovereign data</h3><p>GDPR and Armenian DPA compliance; Armenian personal data and case content stay inside the sovereign perimeter. Every decision lands in a tamper-evident audit chain.</p></div>
+</div>
+</div></section>
+
+<div class="cta-final"><div class="wrap">
+<span class="eyebrow">POINTS96</span>
+<h2>Autonomy you can stop is autonomy you can trust</h2>
+<p>SENSEI runs HAYLEX legal-tech today and governs the POINTS96 trading stack next.</p>
+<a class="btn gold" href="mailto:harutyunyan@points96.com?subject=SENSEI%20access%20request">Request access</a>
+</div></div>
+
+<footer><div class="wrap">
+<span>© 2026 POINTS96 Holdings</span>
+<span>HAYLEX AI</span><span>HFT.96</span><span>META</span>
+<span class="right mono">Yerevan · v0.7.3</span>
+</div></footer>
+
+</body>
+</html>
